@@ -3,7 +3,7 @@ package de.pieroavola.httpmock.requestdsl
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 
-@HttpRequestMarker
+@HttpMockDsl
 class MockRequestBuilder : HttpRequestScope {
 
   private var getFunction: Request.() -> Response = { response {} }
@@ -17,42 +17,42 @@ class MockRequestBuilder : HttpRequestScope {
 
   //<editor-fold desc="HttpRequestScope">
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun get(block: Request.() -> Response) {
     getFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun head(block: Request.() -> Response) {
     headFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun post(block: Request.() -> Response) {
     postFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun put(block: Request.() -> Response) {
     putFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun patch(block: Request.() -> Response) {
     patchFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun delete(block: Request.() -> Response) {
     deleteFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun option(block: Request.() -> Response) {
     optionFunction = block
   }
 
-  @HttpRequestMarker
+  @HttpMockDsl
   override fun trace(block: Request.() -> Response) {
     traceFunction = block
   }
@@ -104,7 +104,7 @@ class MockRequestBuilder : HttpRequestScope {
   //</editor-fold>
 }
 
-@HttpRequestMarker
+@HttpMockDsl
 fun mockRequest(block: MockRequestBuilder.() -> Unit): MockRequestBuilder = MockRequestBuilder().apply(block)
 
 private val HttpServletRequest.asRequest: Request

@@ -2,6 +2,9 @@ package de.pieroavola.httpmock.requestdsl
 
 import org.springframework.http.HttpStatus
 
+@DslMarker
+annotation class ResponseDsl
+
 interface ResponseBuilderScope {
   fun text(string: String): ByteArray
 }
@@ -11,7 +14,7 @@ class ResponseBuilder(
   var body: ByteArray? = null,
 ) : ResponseBuilderScope {
 
-  @HttpRequestMarker
+  @ResponseDsl
   override fun text(string: String): ByteArray = string.toByteArray()
 
   fun build() = Response(
@@ -20,5 +23,5 @@ class ResponseBuilder(
   )
 }
 
-@HttpRequestMarker
+@ResponseDsl
 fun response(block: ResponseBuilder.() -> Unit): Response = ResponseBuilder().apply(block).build()
