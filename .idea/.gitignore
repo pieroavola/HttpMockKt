@@ -1,0 +1,9 @@
+*
+!/codeStyles
+!/codeStyles/*
+!/icon.png
+!/icon.svg
+!/.gitignore
+!/modules.xml
+!/gradle.xml
+
