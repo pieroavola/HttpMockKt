@@ -11,7 +11,7 @@ import de.pieroavola.httpmock.requestdsl.response
 import org.slf4j.LoggerFactory
 
 @RestController
-class CatchAllRestController {
+class CatchAllRestController(private val scriptRunner: ScriptRunner) {
 
   private val logger = LoggerFactory.getLogger(CatchAllRestController::class.java)!!
 
@@ -21,6 +21,8 @@ class CatchAllRestController {
     if (request.servletPath != "/favicon.ico") {
       logger.info("{} {}{}", request.method, request.servletPath, request.queryStringWithSeparator)
     }
+
+    val mockRequest = scriptRunner.runScript()
 
     when (resolve(request.method)) {
       GET -> mockRequest.performGetRequest(request, response)

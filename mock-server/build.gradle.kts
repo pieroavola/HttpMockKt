@@ -22,10 +22,16 @@ repositories {
 }
 
 dependencies {
+
   implementation("org.springframework.boot:spring-boot-starter-web")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+  implementation("org.jetbrains.kotlin:kotlin-scripting-common")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-jvm")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host")
   implementation(project(":mock-dsl"))
+
   developmentOnly("org.springframework.boot:spring-boot-devtools")
   annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }

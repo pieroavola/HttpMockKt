@@ -19,9 +19,16 @@ repositories {
 }
 
 dependencies {
-  implementation("org.springframework:spring-web:6.1.12")
+
+  api("org.springframework:spring-web:6.1.12")
   implementation("org.apache.tomcat.embed:tomcat-embed-core:10.1.28")
   implementation(kotlin("reflect"))
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
+  implementation("org.jetbrains.kotlin:kotlin-scripting-common")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-jvm")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies")
+  implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven")
 }
 
 kotlin {

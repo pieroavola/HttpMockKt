@@ -1,2 +1,2 @@
 rootProject.name = "HttpMockKt"
-include("mock-server", "mock-dsl")
+include("mock-server", "mock-dsl", "scripts")
