@@ -42,6 +42,15 @@ class CatchAllRestController {
         body = text("success")
       }
     }
+
+    post {
+
+      return@post if (path.contains("/abc")) {
+        response { status = HttpStatus.NOT_FOUND }
+      } else {
+        response { status = HttpStatus.NO_CONTENT }
+      }
+    }
   }
 
   private fun unknownMethod(method: String?, response: HttpServletResponse) {
